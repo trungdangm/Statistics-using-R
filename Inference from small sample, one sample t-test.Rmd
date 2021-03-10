@@ -1,0 +1,97 @@
+---
+title: "Inference from small sample: One sample t-test"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+A. Two-tailed test
+
+Example 1:
+
+A sample of nine customers spent for lunch ($) at a fast food restaurant: 
+
+       4.20 5.03 5.86 6.45 7.38 7.54 8.46 8.47 9.87 
+
+At the 0.05 lvele of confidence, is there evidence that the mean amount spent for lunch is different from 6.50$ ?
+
+
+The null hyppthesis H0 : The mean amount spent for lunch is 6.50$
+
+The alternative hypothese H0 : The mean amount spent for lunch is different from 6.50$
+
+```{r}
+spend = c(4.20, 5.03, 5.86, 6.45, 7.38, 7.54, 8.46, 8.47, 9.87)
+mean(spend) # sample mean
+sd(spend) # standard deviation
+```
+
+```{r}
+t.test(spend, mu = 6.50)
+```
+
+The p-value = 0.4069 > 0.05. Therefore, we can not reject the null hypothesis.
+
+The data does not provide enough evidence to conclude that the mean amount spent for lunch is different from 6.50$
+
+
+
+Example 2:
+
+Labels on 3.79 litre(l) cans of paint usually indicate the drying time and the area can be covered in one coat.
+Most brands of paint indicate that, in one coat, 3.79 l will cover between 23.2 and 46.4 square metres (m2), depending on the texture of the surface to be painted.
+One manufacturer, however, claims that 3.79 l of its paint wil cover 37.2 square meters of surface area. 
+To test this claim, a random sample of ten 3.79 l cans of white paint were used to paint ten identical areas using the same kind of equipement. 
+The actual areas (in square meters) covered by these 3.79l of paint are given here :
+
+ 28.8   28.9   38.3   34.2   41.5
+ 34.9   28.2   38.1   33.9   32.5
+
+Do the data present sufficient evidence to indicate that the average coverage differs from 37.2 m2 ?
+
+(Mendenhall, Introduction to Probability anf Statistic, Nelson education, p.418)
+
+
+The null hypothesis H0 :  mu = 37.2
+The alternative hypothesis Ha : mu ≠ 37.2
+
+```{r}
+sureface = c(28.8, 28.9, 38.3, 34.2, 41.5, 34.9, 28.2, 38.1, 33.9, 32.5)
+mean(sureface)
+sd(sureface)
+```
+
+```{r}
+t.test(sureface, mu = 37.2)
+```
+
+p-value = 0.034939 < 0.05.
+
+We reject the null hypothesis. 
+
+There is sufficient evidence to indicate that the average coverage differs from 37.2 m2.
+
+
+
+
+B. One-tailed test
+
+From 58 sales, an analyst finds that the mean amount spent is 26.05$ with a standard deviation of 10.20$. 
+
+Test the hypothesis that the mean is still $24.85, as it was last year, against the alternative that it is has increased.
+
+```{r}
+set.seed(0)
+sale <- c(rnorm(58, mean = 26.05, sd = 10.20))
+t.test(sale, mu = 24.85, alternative = c('less'), conf.level= 0.95)
+```
+
+
+
+
+
+
+
+

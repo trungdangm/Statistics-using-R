@@ -1,0 +1,30 @@
+---
+title: "Wilcoxon Rank Sum test (Mann Whitney)"
+output: html_document
+---
+
+
+The weight of turtles caught in two different lakes are measured to compare the effect of the two lakes environments on turtle growth. All the turtles were tagged before being released into the lakes. Do the data present sufficient evidence to indicate a difference in the distributions of weights for the tagged turtles exposed to the two-lake environments?
+(Introduction to Probability and Statistics, Mendenhall et al. , Nelson Education)
+
+
+
+```{r}
+lake1 <- c(399.7,430.9,394.1,411.2,416.7,391.2,396.9,456.4,360.0,433.7)
+lake2 <- c(345.9,368.8,399.7,385.6,351.5,337.4,354.4,391.2)
+```
+
+```{r}
+mean(lake1)
+```
+
+```{r}
+mean(lake2)
+```
+
+```{r}
+wilcox.test(lake1, lake2, exact =F)
+```
+
+Since the p-value (0.005) is less than 0.05, we reject the null hypothesis. 
+There is not enough evidence to support that there is difference in environment of the two lakes. 

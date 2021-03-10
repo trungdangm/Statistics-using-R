@@ -1,0 +1,54 @@
+---
+title: "ONE-TAILED, ONE-SAMPLE T-TEST"
+output: html_document
+---
+
+
+
+
+A bottle filling machine is set to fill bottles with soft drink to a volume of 500 millilitersmm. The actual volume is known to follow a normal distribution. The manufacturer believes the machine is under-filling bottles. A sample of 20 bottles is taken and the volume of liquid inside is measured.
+
+```{r}
+bottles <- c(484.11,459.49,471.38,512.01,494.48,
+             528.63,493.64,485.03,473.88,501.59,
+             502.85,538.08,465.68,495.03,475.32,
+             529.41,518.13,464.32,449.08,489.27)
+```
+
+We want to know whether the volume is less than 500 milliliters. 
+
+We have to determine whether the bottles are being consistently under filled, or whether the low mean volume for the sample could be the result of random variation. 
+
+The sample mean is calculated as follow:
+
+```{r}
+mean(bottles)
+```
+
+The null hypothesis: the mean filling volume is equal to 500 milliliters.
+
+The alternative hypothesis: the mean filling volume is less than 500 milliliters.
+
+
+A significance level of 0.01 is to be used.
+
+```{r}
+t.test(bottles, 
+       mu = 500, 
+       alternative = "less", 
+       conf.level = 0.99)
+```
+
+The mean volume of bottles for the sample is 491.6 ml. 
+
+The one-sided 99% confidence interval means the filling volume is likely to be less than 505.64 ml.
+
+Because the p-value of 0.07243, the probability of selecting a sample with a mean volume less than or equal to 500 ml would be approximately 7%.
+
+Because the p-value is not less than the significance level of 0.01, we cannot reject the null hypothesis that the mean filling volume is equal to 500 ml. In conclusion, there is no evidence that the bottles are being under-filled.
+
+
+
+
+
+

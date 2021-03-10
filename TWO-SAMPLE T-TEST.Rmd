@@ -1,0 +1,43 @@
+---
+title: "TWO-SAMPLE T-TEST"
+output: html_document
+---
+
+We wish to use a two-sample t-test to determine whether there is any real difference in mean sepal width for the **Versicolor** and **Virginica** species of iris. 
+
+We can assume that sepal width is normally distributed, and that the variance for the two groups is equal. 
+
+The null hypothesis:  there is no real difference in mean sepal width for the two species
+The alternative hypothesis: there is a difference.
+
+
+```{r}
+head(iris,10)
+```
+
+```{r}
+t.test(Sepal.Width ~ Species, 
+       iris, 
+       Species %in% c("versicolor", "virginica"), 
+       var.equal = T)
+```
+
+The 95% confidence interval for the difference is –0.33 to –0.08, meaning that the mean sepal width for the **Versicolor** species is estimated to be between 0.08 and 0.33 cm less than for the **Virginica** species.
+
+The p-value of 0.001819 is less than the significance level of 0.05, so we can reject the null hypothesis that the mean sepal width is the same for the **Versicolor** and **Virginica** species in favor of the alternative hypothesis that the mean sepal width is different for the two species.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

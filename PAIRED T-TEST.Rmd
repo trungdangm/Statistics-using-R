@@ -1,0 +1,45 @@
+---
+title: "PAIRED T-TEST"
+output: html_document
+---
+
+
+Gives brain volumes (in cubic centimetres) of the first and second-born twins for ten sets of monozygotic twins.
+
+Pair	Twin1	Twin2
+1	    1005	963
+2	    1035	1027
+3	    1281	1272
+4	    1051	1079
+5	    1034	1070
+6	    1079	1173
+7	    1104	1067
+8	    1439	1347
+9	    1029	1100
+10	  1160	1204
+
+Suppose that you wish to use a t-test to determine whether brain volume is related to birth order. Brain volume is assumed to follow a normal distribution. The data is naturally paired because the first twin from a birth corresponds to the second twin in the same birth, so a paired t-test is suitable. Because differences in either direction are of interest, a two-tailed test is used. The null hypothesis for the test is that there is no difference in mean brain volume for first- and second-born twins, and the alternative hypothesis is that the mean brain volume for first-born twins is different to that of second-born twins.
+
+```{r}
+Twin1	<- c(1005,1035,1281,1051,	1034, 1079, 1104,	1439,1029,1160)  
+Twin2 <- c(963, 1027, 1272,1079,1070,1173,1067,1347,1100, 1204) 
+```
+
+```{r}
+t.test(Twin1,Twin2, paired=T)
+```
+
+
+The mean difference in brain size is estimated at –8.5, meaning that the brain size of the first born twins was an average of 8.5 cubic centimeters less than that of their second born sibling. The confidence interval for the difference is –49 to 32 cubic centimeters.
+
+The p-value of 0.6466 tells us that if the mean brain size for first- and second-born twins is the same, the probability of observing a difference equal or greater in magnitude to that in our sample is 65%. As the p-value is not less than the significance level of 0.05, the null hypothesis cannot be rejected. This means there is no evidence that brain size is related to birth order in twins.
+
+
+
+
+
+
+
+
+
+
